@@ -12,11 +12,11 @@ async function createShortUrl(req, res) {
         return
     }
    
-    try {
+    try { 
         // checking if original url is already present
         const urlDoc = await Url.findOne({ url })
         if(urlDoc) {
-            const shortUrl = `${clientUrl}/${urlDoc.shortUrlId}`//**eg, https://krishna.ly/qbc123
+            const shortUrl = `${clientUrl}/${urlDoc.shortUrlId}`//**eg, https://krishnendu.kr/qbc123
             res.status(200).json({shortUrl: shortUrl, clicks: urlDoc.clicks})
             console.log('Url already present', shortUrl)
             return
@@ -43,7 +43,7 @@ async function createShortUrl(req, res) {
 
 
 async function redirectToOriginalUrl(req, res) {
-    const { shortUrlId } = req.params
+    const { shortUrlId } = req.params// getting the short url id from the url params, eg, https://krishnendu.kr/qbc123, here qbc123 is the shortUrlId
 
     try {
         const urlDoc = await Url.findOne({shortUrlId})
@@ -56,7 +56,7 @@ async function redirectToOriginalUrl(req, res) {
         // $inc increase the clicks by 1
         await Url.findByIdAndUpdate(urlDoc._id, { $inc: { 'clicks' : 1 } })
         // redirect to the original url
-        return res.status(200).redirect(urlDoc.url)
+        return res.status(200).redirect(urlDoc.url)//redirect to the original url, eg, https://www.google.com
     }
     catch(err) {
         console.log(err)

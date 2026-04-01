@@ -9,4 +9,4 @@ module.exports = async () => {
         urlId = nanoid(6)
     }
     return urlId;
-}
+} 
