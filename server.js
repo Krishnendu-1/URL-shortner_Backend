@@ -8,6 +8,11 @@ const indexRouter = require('./routes/routes.js')
 
 const PORT = process.env.PORT || 5000
 
+
+app.get('/',(req,res)=>{
+    res.send(`the default route runnning on the ec2 port ${env.PORT}`)
+})
+
 app.get('/test', (req, res) => {
     res.send('test route')
 })
