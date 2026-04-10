@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000
 
 
 app.get('/',(req,res)=>{
-    res.send(`the default route runnning on the ec2 port ${env.PORT}`)
+    res.send(`the default route runnning on the ec2 port ${process.env.PORT}`)
 })
 
 app.get('/test', (req, res) => {
